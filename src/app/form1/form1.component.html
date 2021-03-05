@@ -1,0 +1,175 @@
+<nav class="navbar navbar-dark navbar-fixed-top" style="height: auto; padding: 10px; background-color:rebeccapurple;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="http://localhost:4200/"> Design Den Textile  </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropdown
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+
+
+
+<!-- <nav class="navbar navbar-dark navbar-fixed-top" style="height: auto; padding: 10px; background-color:rebeccapurple;">
+<div class="container" >
+    <div class="navbar-header">
+        <a class="navbar-brand" href="https://www.facebook.com/" >
+            <div class="logo" >
+                <img src="../../assets/Images/logo.jpg" width="60" height="60">
+            </div>
+            <p>
+                Design <br> Den <br> Textile
+            </p>
+        </a>
+    </div>
+    <div class="collapse navbar-collapse" >
+        <ul class="nav navbar-nav navbar-right" style="margin-top:6px;" >
+
+        </ul>
+    </div>
+</div>
+</nav> -->
+
+<!-- Nav bar sample testing 1 -->
+
+<div class="container">
+   
+    <div class="row">
+      
+
+        <form #studentForm="ngForm" (ngSubmit)="submit(studentForm,student)" class="example-form">
+            <mat-form-field class="example-full-width">
+                <!-- <label for="exampleInputName" class="form-label">Name </label> -->
+                <input type="text" matInput placeholder="Name" #name="ngModel" class="" pattern="[A-Za-z ]+" name="name"
+                    [(ngModel)]="student.name" required>
+                <span *ngIf="name?.invalid && (name.dirty || name.touched)">
+                    <div style="color: red;" class="error" *ngIf="name.errors.required"> Please Insert Name </div>
+                    <div style="color: red;" class="error" *ngIf="name.errors.pattern"> Please Insert Valid Name </div>
+                </span>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <!-- <label for="exampleInputEmail1" class="form-label">Email address</label> -->
+                <input type="email" matInput placeholder="Email" #email="ngModel" class=""
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email" [(ngModel)]="student.email" required>
+                <span *ngIf="email?.invalid && (email.dirty || email.touched)">
+                    <div style="color: red;" class="error" *ngIf="email.errors.required"> Please Insert Email </div>
+                    <div style="color: red;" class="error" *ngIf="email.errors.pattern"> Please Insert Valid Email
+                    </div>
+                </span>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <!-- <label for="exampleInputPhone" class="form-label">Mobile Number</label> -->
+                <input type="number" matInput placeholder="Mobile Number" #phone="ngModel" class=""
+                    pattern="[7-9]{1}[0-9]{9}" name="phone" [(ngModel)]="student.phone" required>
+                <span *ngIf="phone?.invalid && (phone.dirty || phone.touched)">
+                    <div style="color: red;" class="error" *ngIf="phone.errors.required"> Please Insert Phone </div>
+                    <div style="color: red;" class="error" *ngIf="phone.errors.pattern"> Number starts with 9,8,7 and 10
+                        digits only
+                    </div>
+                </span>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <mat-label for="exampleInputEducation" class="form-label">Education </mat-label>
+                <select matNativeControl required class="" id="exampleInputEducation" name="education"
+                    [(ngModel)]="student.education">
+                    <option value="10">10</option>
+                    <option value="12">12</option>
+                    <option value="BCA">BCA</option>
+                    <option value="MCA">MCA</option>
+                    <option value="BE">BE</option>
+                </select>
+                <!-- <input type="text" class="form-control"   name="education" [(ngModel)]="student.education"> -->
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <!-- <label for="exampleInputCity" class="">City</label> -->
+                <input type="text" matInput placeholder="City" #city="ngModel" class="" name="city" pattern="[A-Za-z ]+"
+                    [(ngModel)]="student.city" required>
+                <span *ngIf="city?.invalid && (city.dirty || city.touched)">
+                    <div style="color: red;" class="error" *ngIf="city.errors.required">Please Insert City Name</div>
+                    <div style="color: red;" class="error" *ngIf="city.errors.pattern">Please Insert Only Text</div>
+                </span>
+            </mat-form-field>
+            <mat-form-field>
+                <!-- <label  for="exampleInputDOB" matInput placeholder="Date Of" class="form-label">Date Of Birth</label> -->
+                <input matInput [matDatepicker]="picker" placeholder="Choose a date" type="date" class="" name="dob"
+                    [(ngModel)]="student.dob" required>
+                <!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle> -->
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <mat-label for="exampleInputGen" class="form-label">Gender</mat-label>
+                <select matNativeControl required class="" id="exampleInputGen" name="gender" [(ngModel)]="student.gender">
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                </select>
+            </mat-form-field>
+
+            <button mat-button type="submit" *ngIf="!buttonshow">Submit</button>
+            <button type="button" *ngIf="buttonshow" class="btn btn-primary" (click)="updatdata();">Update</button>
+            <!-- <button type="button" class="btn btn-primary" (click)="sum()">Sum</button> -->
+
+            <!-- <button mat-button>Click me!</button> -->
+
+
+        </form>
+    </div>
+    <div class="row">
+        <h1 *ngIf="showHeader">Employee List</h1>
+        <table *ngIf="employeeList.length > 0" class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Education</th>
+                    <th scope="col">City</th>
+                    <th scope="col">Date Of Birth</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Phone</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let value of employeeList; let i = index">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{value.name}}</td>
+                    <td>{{value.email}}</td>
+                    <td>{{value.education}}</td>
+                    <td>{{value.city}}</td>
+                    <td>{{value.dob}}</td>
+                    <td>{{value.gender}}</td>
+                    <td>{{value.phone}}</td>
+                    <td><button type="button" class="btn btn-danger" (click)="remove(i,value)">Remove</button></td>
+                    <td><button type="button" class="btn btn-danger" (click)="update(i,value)">Update</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
